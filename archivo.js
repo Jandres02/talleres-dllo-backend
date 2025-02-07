@@ -49,4 +49,4 @@ function peorParidad (n) {
   }
 }
 
-console.log(peorParidad(8))
+
