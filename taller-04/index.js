@@ -7,6 +7,7 @@ app.use(express.json());
 
 let users = JSON.parse(fs.readFileSync('data/datos.json', 'utf-8'));
 
+// PUNTO 1
 app.get('/users/hobby', (req, res) => {
     const hobby = req.query.hobby;
     if (!hobby) {
@@ -20,6 +21,7 @@ app.get('/users/hobby', (req, res) => {
     res.json(usersWithHobby);
 });
 
+// PUNTO 2
 app.get('/users/exists', (req, res) => {
     const codigo = req.query.codigo;
     if (!codigo) {
@@ -30,6 +32,7 @@ app.get('/users/exists', (req, res) => {
     res.json({ exists });
 });
 
+// PUNTO 3
 app.get('/users/hobby/count', (req, res) => {
     const hobby = req.query.hobby;
     if (!hobby) {
@@ -43,11 +46,13 @@ app.get('/users/hobby/count', (req, res) => {
     res.json({ count });
 });
 
+// PUNTO 4
 app.get('/users/is-free', (req, res) => {
     const freeUsers = users.filter(user => user.hobbies.length < 3);
     res.json(freeUsers);
 });
 
+// PUNTO 5
 app.post('/users/suggest', (req, res) => {
     const { codigo, hobby } = req.body;
     if (!codigo || !hobby) {
@@ -74,6 +79,7 @@ app.post('/users/suggest', (req, res) => {
     res.json(users[userIndex]);
 });
 
+// PUNTO 6
 app.post('/users', (req, res) => {
     const { codigo, nombre, apellido, hobbies } = req.body;
     
